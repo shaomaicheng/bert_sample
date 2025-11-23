@@ -8,6 +8,7 @@ session = ort.InferenceSession("results/onnx/model.onnx")
 
 text = "北京是[MASK]国的首都"
 inputs = tokenizer(text, return_tensors="np")  # ← NumPy
+print("inputs: ", inputs)
 
 # 找 [MASK] 位置（用 NumPy）
 mask_idx = np.where(inputs["input_ids"] == tokenizer.mask_token_id)[1][0]  # 取第一个
